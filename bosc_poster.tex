@@ -28,13 +28,13 @@ clearlang=true
 
 
 \renewcommand*{\bibfont}{\small}
-\bibliography{library.bib}
+%\bibliography{library.bib}
 
 
 \usetheme{BCCRC}
 
 \title{Screw: tools for building reproducible single-cell epigenomics workflows}
-\author{Kieran O'Neill, Chelsey Fang, Benjamin Decato,  Azhar Khandekar, Alexander Goncearenco, Aly Karsan}
+\author{Kieran O'Neill, Chelsey Fang, Benjamin Decato, Azhar Khandekar, Alexander Goncearenco, Ben Busby, Aly Karsan}
 \institute{Genome Sciences Centre, BC Cancer Agency, Vancouver, BC, Canada}
 
 
@@ -58,32 +58,45 @@ The resulting data represents a fundamental shift in the capacity to measure and
 
 \begin{figure}
 \begin{center}
-%\includegraphics[width=0.9\textwidth]{figures/aza_diagram_nrd1698.png}
+\includegraphics[width=0.9\textwidth]{figures/nrg3980-f1.jpg}
 \end{center}
-%\caption[]{\textbf{5-Azacytidine}
-%\small{Adapted by permission from Macmillan Publishers Ltd: Nature Reviews Drug Discovery 4, 275-276 (April 2005)} }
+\caption[]{\textbf{DNA Methylation, both bulk and single cell}
+\small{Schwartzman et al (2015) Nature Reviews in Genetics (used by permission) } }
 \end{figure}
 
-The mechanism of 5-Aza resistance, and indeed the details of its action in patient bone marrow, has not been clearly determined. We have embarked on a study of purified CD34+CD38-Lin- progenitor cells from paired bone marrow aspirates drawn from patients with myeloid malignancies before and after 5-Aza treatment. We will be investigating both patients who developed resistance, and those for whom therapy was still effective. In this poster, we discuss results from the first patient in this series.
-
 \end{block}
 
 
+\begin{block}{Reproducible Research with CWL and Docker}
+Reproducible research means completely reproducing a given bioinformatic analysis
+This requires having the exact \textbf{data}, \textbf{code} and \textbf{software} that was used.
+
+\begin{itemize}
+\item Open data in bioinformatics is a fairly solved problem.
+\item Code is getting there with RMarkdown/Jupyter, but could be better.
+\item Software versions (and accompanying OS/ecosystem) are a big problem.
+\end{itemize}
+CWL aims to provide a uniform and fully reproducible way of representing bioinformatics workflows. Docker aims to provide the exact environment in which an analysis was run. Together, they promise to help bioinformaticians to publish fully reproducible research.
+
+As a side effect, Dockstore enables easy sharing of workflow components to help build new workflows. 
+\end{block}
 
 
-\begin{block}{Funding}
+\begin{block}{Enter Screw}
+Screw stands for Single Cell Reproducible Epigenomics Workflow
+
+Screw aims to provide a series of CWL+Dockerised mini-workflows and workflow components for creating fully reproducible single-cell DNA methylation analysis.
+\end{block}
+
+
+\begin{block}{What SC-WGBS Data Looks Like}
 \begin{center}
-\includegraphics[width=0.9\textwidth]{figures/funding.pdf}
+\includegraphics[width=0.9\textwidth]{figures/igv_sc.png}
 \end{center}
 
 \end{block}
 
-\begin{block}{Contact}
-\textbf{GitHUB:} \verb1https://github.com/oneillkza1  
 
-\textbf{Kieran O'Neill:} koneill@bcgsc.ca 
-
-\end{block}
 
 
 
@@ -96,17 +109,68 @@ The mechanism of 5-Aza resistance, and indeed the details of its action in patie
 \begin{column}{.65\textwidth}
 \vspace*{-\baselineskip}
   \begin{columns}[t,totalwidth=\textwidth]
-    \column{.48\textwidth}
-    Some material for the second column goes here.
-    \column{.48\textwidth}
-    Some material for the third column goes here.
+    \begin{column}{.48\textwidth}
+	%Second column, above figure
+    
+	\begin{block}{Preprocessing}
+	
+	\end{block}
+
+	\end{column}
+
+	\begin{column}{.48\textwidth}
+	%Third column, above figure
+	\begin{block}{Clustering}
+	
+	\end{block}
+
+	\end{column}
   \end{columns}
-  \includegraphics[width=\textwidth,height=2cm]{bcca_logo.pdf}
+
+	\begin{block}{Screw Workflow}
+  \includegraphics[width=\textwidth]{figures/workflow_diagram.pdf}
+  \end{block}
   \begin{columns}[t,totalwidth=\textwidth]
-    \column{.48\textwidth}
-    Some material for the second column goes here.
-    \column{.48\textwidth}
-    Some material for the third column goes here.
+
+
+\begin{column}{.48\textwidth}
+   
+
+% Second column, below figure   
+    
+\begin{block}{CWL Stumbling Blocks}
+
+\end{block}
+
+
+
+\begin{block}{Future Plans}
+
+tSNE
+
+\end{block}
+\end{column}
+
+	\begin{column}{.48\textwidth}
+% Third column, below figure   
+\begin{block}{How did Screw come about?}
+Screw was initially created during the NCBI Genomics Hackathon in March 2017, organised by Ben Busby.
+\begin{center}
+  \includegraphics[width=\textwidth]{figures/hackathon_team.jpg}
+\end{center}
+
+\end{block}
+
+
+\begin{block}{Contact/GitHub}
+\textbf{GitHUB:} \verb1https://github.com/Epigenomics-Screw1  
+
+\textbf{Kieran O'Neill:} koneill@bcgsc.ca 
+
+\end{block}
+ 
+\end{column}
+
   \end{columns}
 \end{column}
 
