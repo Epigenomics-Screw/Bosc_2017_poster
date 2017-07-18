@@ -1,0 +1,118 @@
+\documentclass{beamer}
+\usepackage[orientation=portrait, size=a0, scale=1.1]{beamerposter}
+\usepackage{multicol} % This is so we can have multiple columns of text side-by-side
+\usepackage{parskip}
+%\usepackage{enumitem}
+%\setlist[itemize]{parsep=0pt}
+%\setlist[enumerate]{parsep=0pt}
+%\parindent=0em
+
+%% Bibliography stuff (biblatex):
+\usepackage[
+backend=bibtex,
+firstinits=true, 
+isbn=false, 
+url=false,
+maxbibnames=3,
+doi=false,
+clearlang=true,
+terseinits=true,
+citestyle=numeric,
+autolang=hyphen,
+clearlang=true
+]{biblatex} 
+
+\AtEveryBibitem{%
+  \clearlist{language}%
+}
+
+
+\renewcommand*{\bibfont}{\small}
+\bibliography{library.bib}
+
+
+\usetheme{BCCRC}
+
+\title{Screw: tools for building reproducible single-cell epigenomics workflows}
+\author{Kieran O'Neill, Chelsey Fang, Benjamin Decato,  Azhar Khandekar, Alexander Goncearenco, Aly Karsan}
+\institute{Genome Sciences Centre, BC Cancer Agency, Vancouver, BC, Canada}
+
+
+\begin{document}
+\begin{frame}[t, squeeze, fragile]
+\begin{columns}[t]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% COLUMN 1
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{column}{.32\textwidth}
+
+
+\begin{block}{Background: Single-cell DNA Methylation Sequencing}
+DNA methylation is a heritable epigenetic mark that shows a strong correlation with transcriptional activity. 
+The gold standard for detecting DNA methylation is whole genome bisulfite sequencing (WGBS). 
+Recently, WGBS has been performed successfully on single cells (SC-WGBS) [@Schwartzman2015].
+The resulting data represents a fundamental shift in the capacity to measure and interpret DNA methylation, especially in rare cell types and contexts where subtle cell-to-cell heterogeneity is crucial, such as in stem cells or cancer. 
+
+\begin{figure}
+\begin{center}
+%\includegraphics[width=0.9\textwidth]{figures/aza_diagram_nrd1698.png}
+\end{center}
+%\caption[]{\textbf{5-Azacytidine}
+%\small{Adapted by permission from Macmillan Publishers Ltd: Nature Reviews Drug Discovery 4, 275-276 (April 2005)} }
+\end{figure}
+
+The mechanism of 5-Aza resistance, and indeed the details of its action in patient bone marrow, has not been clearly determined. We have embarked on a study of purified CD34+CD38-Lin- progenitor cells from paired bone marrow aspirates drawn from patients with myeloid malignancies before and after 5-Aza treatment. We will be investigating both patients who developed resistance, and those for whom therapy was still effective. In this poster, we discuss results from the first patient in this series.
+
+\end{block}
+
+
+
+
+\begin{block}{Funding}
+\begin{center}
+\includegraphics[width=0.9\textwidth]{figures/funding.pdf}
+\end{center}
+
+\end{block}
+
+\begin{block}{Contact}
+\textbf{GitHUB:} \verb1https://github.com/oneillkza1  
+
+\textbf{Kieran O'Neill:} koneill@bcgsc.ca 
+
+\end{block}
+
+
+
+\end{column}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% COLUMN 2
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{column}{.65\textwidth}
+\vspace*{-\baselineskip}
+  \begin{columns}[t,totalwidth=\textwidth]
+    \column{.48\textwidth}
+    Some material for the second column goes here.
+    \column{.48\textwidth}
+    Some material for the third column goes here.
+  \end{columns}
+  \includegraphics[width=\textwidth,height=2cm]{bcca_logo.pdf}
+  \begin{columns}[t,totalwidth=\textwidth]
+    \column{.48\textwidth}
+    Some material for the second column goes here.
+    \column{.48\textwidth}
+    Some material for the third column goes here.
+  \end{columns}
+\end{column}
+
+
+\end{columns}
+
+\end{frame}
+
+\end{document}

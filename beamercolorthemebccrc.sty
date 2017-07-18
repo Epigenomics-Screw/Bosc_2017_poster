@@ -1,0 +1,66 @@
+%\ProvidesPackageRCS $Header: /cvsroot/latex-beamer/latex-beamer/themes/color/beamercolorthemealbatross.sty,v 1.9 2007/01/28 20:48:24 tantau Exp $
+
+\definecolor{bccrcblue}{cmyk}{1.0,0.96, 0, 0.08}
+\definecolor{bccrcgray}{cmyk}{0,0.17,0.34,0.62}
+\definecolor{bccrclightblue}{cmyk}{0.87, 0, 0.38, 0}
+\definecolor{bccrcmidblue}{cmyk}{0.77, 0.68, 0, 0}
+\definecolor{bccrcmidpurple}{cmyk}{0.43, 0.76, 0, 0}
+\definecolor{bccrcpink}{cmyk}{0, 0.75, 0.3, 0}
+
+
+\mode<presentation>
+\setbeamercolor*{normal text}{fg=black, bg=white}
+
+%\setbeamercolor*{example text}{fg=bccrcgray, bg=white}
+
+\setbeamercolor*{structure}{fg=bccrcblue, bg=white}
+
+% Heading, etc:
+\setbeamercolor{headline}{fg=white, bg=bccrcblue}
+\setbeamercolor{title in headline}{fg=white}
+%\setbeamercolor{author in headline}{fg=ta2orange}
+%\setbeamercolor{institute in headline}{fg=ta3orange}
+
+
+%\setbeamercolor{section in toc}{fg=white,bg=bccrcgray}
+%\setbeamercolor{subsection in toc}{parent=section in toc}
+
+%Bullets/enum:
+\setbeamercolor{item}{fg=white}
+\setbeamercolor{itemize item}{fg=bccrcgray}
+
+%Footer:
+\setbeamercolor*{author in head/foot}{fg=bccrcgray, bg=bccrcblue}
+\setbeamercolor*{title in head/foot}{fg=bccrcgray, bg=bccrcblue}
+\setbeamercolor*{date in head/foot}{fg=bccrcgray, bg=bccrcblue}
+\setbeamercolor{footline}{fg=bccrcgray, bg=bccrcblue}
+
+%Separators
+%\setbeamercolor*{separation line}{bg=bccrcgray}
+%\setbeamercolor*{fine separation line}{bg=bccrcgray}
+
+
+\setbeamercolor{palette primary}{fg=bccrcblue}
+%\setbeamercolor{palette secondary}{fg=white,bg=bccrcgray}
+\setbeamercolor{palette tertiary}{use={structure,normal text},fg=structure.fg,bg=normal text.bg}
+%\setbeamercolor{palette quaternary}{use={structure,normal text},fg=structure.fg,bg=bccrcgray}
+\setbeamercolor*{block body}{bg=normal text.bg}
+\setbeamercolor*{block body alerted}{bg=normal text.bg}
+\setbeamercolor*{block body example}{bg=normal text.bg}
+\setbeamercolor*{block title}{fg=bccrcblue}
+%\setbeamercolor*{block title alerted}{use={normal text,alerted text},fg=alerted text.fg!75!normal text.fg,bg=normal text.bg}
+%\setbeamercolor*{block title example}{use={normal text,example text},fg=example text.fg!75!normal text.fg,bg=normal text.bg}
+
+\setbeamercolor{item projected}{fg=black}
+
+\setbeamercolor*{sidebar}{parent=palette primary}
+
+\setbeamercolor{palette sidebar primary}{use=normal text,fg=normal text.fg}
+\setbeamercolor{palette sidebar secondary}{use=structure,fg=structure.fg}
+\setbeamercolor{palette sidebar tertiary}{use=normal text,fg=normal text.fg}
+\setbeamercolor{palette sidebar quaternary}{use=structure,fg=structure.fg}
+
+
+
+\mode
+<all>

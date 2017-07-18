@@ -1,0 +1,213 @@
+\ProvidesPackage{beamerthemeBCCRC}  % this style was created by Kieran O'Neill based on a style by Thomas Deselaers and Philippe Dreuw
+
+\def \mymargin {30mm}
+\def \myblockskip {10mm}
+
+
+\setbeamersize{text margin left=\mymargin} 
+\setbeamersize{text margin right=\mymargin} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Colours
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\definecolor{bccrcblue}{cmyk}{1.0,0.96, 0, 0.08}
+\definecolor{bccrcgray}{cmyk}{0,0.17,0.34,0.62}
+\definecolor{bccrclightgray}{cmyk}{0,0.02,0.04,0.08}
+\definecolor{bccrclightblue}{cmyk}{0.87, 0, 0.38, 0}
+\definecolor{bccrcmidblue}{cmyk}{0.77, 0.68, 0, 0}
+\definecolor{bccrcmidpurple}{cmyk}{0.43, 0.76, 0, 0}
+\definecolor{bccrcpink}{cmyk}{0, 0.75, 0.3, 0}
+
+
+\mode<presentation>
+
+\useinnertheme{rounded} %Eh, doesn't seem to work
+
+\setbeamercolor*{normal text}{fg=black, bg=white}
+
+%\setbeamercolor*{example text}{fg=bccrcgray, bg=white}
+
+\setbeamercolor*{structure}{fg=bccrcblue, bg=white}
+
+% Heading, etc:
+\setbeamercolor{headline}{fg=white, bg=bccrcblue}
+\setbeamercolor{title in headline}{fg=white}
+%\setbeamercolor{author in headline}{fg=ta2orange}
+%\setbeamercolor{institute in headline}{fg=ta3orange}
+
+
+%\setbeamercolor{section in toc}{fg=white,bg=bccrcgray}
+%\setbeamercolor{subsection in toc}{parent=section in toc}
+
+%Bullets/enum:
+\setbeamercolor{item}{fg=white}
+\setbeamercolor{itemize item}{fg=bccrcgray}
+\setbeamercolor{enumerate item}{fg=bccrcblue}
+
+%Footer:
+\setbeamercolor*{author in head/foot}{fg=bccrcgray, bg=bccrcblue}
+\setbeamercolor*{title in head/foot}{fg=bccrcgray, bg=bccrcblue}
+\setbeamercolor*{date in head/foot}{fg=bccrcgray, bg=bccrcblue}
+\setbeamercolor{footline}{fg=bccrcgray, bg=bccrcblue}
+
+%Separators
+%\setbeamercolor*{separation line}{bg=bccrcgray}
+%\setbeamercolor*{fine separation line}{bg=bccrcgray}
+
+
+\setbeamercolor{palette primary}{fg=bccrcblue}
+%\setbeamercolor{palette secondary}{fg=white,bg=bccrcgray}
+\setbeamercolor{palette tertiary}{use={structure,normal text},fg=structure.fg,bg=normal text.bg}
+%\setbeamercolor{palette quaternary}{use={structure,normal text},fg=structure.fg,bg=bccrcgray}
+
+%Settings for grey text blocks with white on blue headers:
+\setbeamercolor*{block body}{bg=bccrclightgray}
+\setbeamercolor*{block title}{fg=bccrclightgray, bg=bccrcblue}
+
+
+
+%\setbeamercolor*{block title}{fg=bccrcblue}
+%\setbeamercolor*{block body}{bg=white}
+
+\setbeamercolor*{block body alerted}{bg=normal text.bg}
+\setbeamercolor*{block body example}{bg=normal text.bg}
+%\setbeamercolor*{block title alerted}{use={normal text,alerted text},fg=alerted text.fg!75!normal text.fg,bg=normal text.bg}
+%\setbeamercolor*{block title example}{use={normal text,example text},fg=example text.fg!75!normal text.fg,bg=normal text.bg}
+
+\setbeamercolor{item projected}{fg=black}
+
+%\setbeamercolor*{sidebar}{parent=\setlength{\parskip}{35pt plus 1pt minus 1pt}palette primary}
+
+\setbeamercolor{palette sidebar primary}{use=normal text,fg=normal text.fg}
+\setbeamercolor{palette sidebar secondary}{use=structure,fg=structure.fg}
+\setbeamercolor{palette sidebar tertiary}{use=normal text,fg=normal text.fg}
+\setbeamercolor{palette sidebar quaternary}{use=structure,fg=structure.fg}
+
+
+\setbeamercolor{bibliography item}{fg=bccrcblue}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Header
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{headline}{
+\leavevmode
+\begin{beamercolorbox}[wd=\paperwidth]{headline}
+\vspace{\mymargin}
+\begin{columns}[T]
+\begin{column}{\mymargin}
+\end{column}
+\begin{column}{.22\paperwidth}
+\begin{center}
+\includegraphics[width=.15\paperwidth]{bcca_logo}
+\end{center}
+\vskip1ex
+\end{column}
+\begin{column}{.700\paperwidth}
+%\vskip 1cm
+\raggedright
+\usebeamercolor{title in headline}{\color{fg}\textbf{\huge{\inserttitle}}\\[3ex]}
+\usebeamercolor{author in headline}{\color{fg}\normalsize{\insertauthor}\\[1ex]}
+\usebeamercolor{institute in headline}{\color{fg}\small{\insertinstitute}\\[1ex]}
+\end{column}
+\begin{column}{.25\paperwidth}
+\vskip1cm
+\begin{center}
+%\includegraphics[width=.7\linewidth]{deselaers/logos/rwthaachenuniversity-whitegray}
+\end{center}
+%\vskip1.5cm
+\end{column}
+\begin{column}{.03\paperwidth}
+\end{column}
+\end{columns}
+\vspace{7.5\mymargin}
+\end{beamercolorbox}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Blocks 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\addtobeamertemplate{block begin}{}
+{
+	%\vspace*{\myblockskip}
+	\setlength\abovedisplayskip{0.5cm}
+	\setlength\abovedisplayshortskip{0.5cm}
+	\setlength{\abovecaptionskip}{1cm}
+	\setlength{\belowcaptionskip}{1cm}
+	\setlength{\parskip}{0.6cm}
+}
+
+
+\addtobeamertemplate{block end}{}{
+	\vspace*{\myblockskip plus 0.5cm minus 0.5cm}
+}
+{\vspace{\myblockskip plus 0.5cm minus 0.5cm}}
+
+%\setbeamertemplate{block begin}{
+%\vskip.75ex
+%\begin{beamercolorbox}[]{block title}%
+%\usebeamerfont*{block title} \insertblocktitle 
+%\end{beamercolorbox}%
+%%{\ifbeamercolorempty[bg]{block body}{}{\nointerlineskip\vskip-0.5pt}}%
+%\usebeamerfont{block body}%
+%\begin{beamercolorbox}[sep=1.5ex, vmode]{block body}%
+%\ifbeamercolorempty[bg]{block body}{\vskip-.25ex}{\vskip-.75ex}\vbox{}%
+%}
+%\setbeamertemplate{block end}{
+%\end{beamercolorbox}
+%}
+
+\setbeamerfont*{block title}{series=\bfseries, size=\normalsize}
+\setbeamerfont*{block body}{size=\small}
+\usepackage{environ}% Required for \NewEnviron, i.e. to read the whole body of the environment
+\makeatletter
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%Turn off nav symbols:
+\usenavigationsymbolstemplate{}
+%Set Arial font:
+\renewcommand{\rmdefault}{phv} % Arial
+\renewcommand{\sfdefault}{phv} % Arial
+\renewcommand\familydefault{\sfdefault}
+
+%Remove "table"/"figure" from table/figure captions
+\setbeamertemplate{caption}{\insertcaption}
+\setbeamerfont{caption}{size=\footnotesize}
+%Fix display of bibliography items:
+
+
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\selectcolormodel{cmyk}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\mode<all>
+
+% adapt height of imtemize rectangles
+\setbeamertemplate{itemize item}[ball]
+%\setbeamertemplate{itemize item}{\raisebox{0.1ex}{$\blacktriangleright$}\hskip0.1em}
+\setbeamertemplate{itemize subitem}{\raisebox{0.1ex}{$\triangleright$}\hskip0.1em}
+% or define your own template using \defbeamertemplate{itemize item}, see beameruserguide.pdf
+\setbeamertemplate{enumerate items}[default]
+
+% equal font sizes for all levels
+\setbeamerfont{itemize/enumerate body}{size=\small}
+\setbeamerfont{itemize/enumerate subbody}{size=\small}
+\setbeamerfont{itemize/enumerate subsubbody}{size=\small}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-PDF-mode: t
+%%% TeX-master: "poster-surf"
+%%% End: 
