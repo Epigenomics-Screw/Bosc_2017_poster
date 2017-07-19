@@ -28,7 +28,7 @@ clearlang=true
 
 
 \renewcommand*{\bibfont}{\small}
-%\bibliography{library.bib}
+\bibliography{library.bib}
 
 
 \usetheme{BCCRC}
@@ -53,7 +53,7 @@ clearlang=true
 \begin{block}{Background: Single-cell DNA Methylation Sequencing}
 DNA methylation is a heritable epigenetic mark that shows a strong correlation with transcriptional activity. 
 The gold standard for detecting DNA methylation is whole genome bisulfite sequencing (WGBS). 
-Recently, WGBS has been performed successfully on single cells (SC-WGBS) [@Schwartzman2015].
+Recently, WGBS has been performed successfully on single cells (SC-WGBS) \cite{Schwartzman2015}.
 The resulting data represents a fundamental shift in the capacity to measure and interpret DNA methylation, especially in rare cell types and contexts where subtle cell-to-cell heterogeneity is crucial, such as in stem cells or cancer. 
 
 \begin{figure}
@@ -61,7 +61,7 @@ The resulting data represents a fundamental shift in the capacity to measure and
 \includegraphics[width=0.9\textwidth]{figures/nrg3980-f1.jpg}
 \end{center}
 \caption[]{\textbf{DNA Methylation, both bulk and single cell}
-\small{Schwartzman et al (2015) Nature Reviews in Genetics (used by permission) } }
+Schwartzman et al (2015) Nature Reviews in Genetics (used by permission) }
 \end{figure}
 
 \end{block}
@@ -90,12 +90,25 @@ Screw aims to provide a series of CWL+Dockerised mini-workflows and workflow com
 
 
 \begin{block}{What SC-WGBS Data Looks Like}
+\begin{figure}
 \begin{center}
-\includegraphics[width=0.9\textwidth]{figures/igv_sc.png}
-\end{center}
+\includegraphics[width=0.9\textwidth]{figures/hoxa9_meth.png}
 
+\end{center}
+\caption{\textbf{DNA methylation around the \textit{HOXA9} TSS, from 100 single cells.}  Blue blocks indicate methylated CpGs, white unmethylated. Teal indicates missing data. DNA methylation data is very sparse -- only a handful of libraries have any coverage at all within a given window. Data from \cite{Farlik2016}.}
+\end{figure}
 \end{block}
 
+\begin{block}{Preprocessing: Format Interconversion}
+	One of the challenges in DNA methylation is the lack of a standard data format. BED files are poorly suited, since multiple data columns are needed. Also, CpG sites are all point locations, so the end column is unncessary. WIG/BigWIG can help, but don't support enough data columns. The consequence is that every data set has its own custom BED-like format. We are working on providing 
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.9\textwidth]{figures/data_types.pdf}
+\caption{\textit{Diverse DNA methylation formats.} Formats from two published papers (\cite{Farlik2013} and \cite{Farlik2016}), NovoMethyl output format (unpublished), and Screw's standard internal format.}
+\end{center}
+\end{figure}
+
+\end{block}
 
 
 
@@ -112,18 +125,12 @@ Screw aims to provide a series of CWL+Dockerised mini-workflows and workflow com
     \begin{column}{.48\textwidth}
 	%Second column, above figure
     
-	\begin{block}{Preprocessing}
 	
-	\end{block}
-
 	\end{column}
 
 	\begin{column}{.48\textwidth}
 	%Third column, above figure
-	\begin{block}{Clustering}
 	
-	\end{block}
-
 	\end{column}
   \end{columns}
 
@@ -137,7 +144,20 @@ Screw aims to provide a series of CWL+Dockerised mini-workflows and workflow com
    
 
 % Second column, below figure   
-    
+\begin{block}{Clustering}
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.9\textwidth]{figures/farlik_heatmap.pdf}
+\caption{\textbf{CLustering} \cite{Farlik2016} }
+\end{center}
+\end{figure}
+
+
+\end{block}
+
+
+
+
 \begin{block}{CWL Stumbling Blocks}
 
 \end{block}
@@ -145,25 +165,42 @@ Screw aims to provide a series of CWL+Dockerised mini-workflows and workflow com
 
 
 \begin{block}{Future Plans}
-
-tSNE
+Many methods are currently being developed, and some have debuted in papers without (yet) an accompanying methods paper. In future we plan to include functionality for:
+\begin{itemize}
+\item tSNE plotting
+\item Epiphylogenomics
+\item DeepCpG
+\item Other machine learning pipelines (e.g. from \cite{Farlik2016}) 
+\end{itemize}
 
 \end{block}
 \end{column}
 
 	\begin{column}{.48\textwidth}
 % Third column, below figure   
-\begin{block}{How did Screw come about?}
-Screw was initially created during the NCBI Genomics Hackathon in March 2017, organised by Ben Busby.
+\begin{block}{Powered by hackathons and interns}
+Screw was initially created during the NCBI Genomics Hackathon in March 2017, organised by Ben Busby. Ben organises awesome hackathons that drive a lot of new open source tool development. Since then, Chelsey Fang, a summer intern, has been working on the framework.
+
+
+\begin{figure}
 \begin{center}
-  \includegraphics[width=\textwidth]{figures/hackathon_team.jpg}
+  \includegraphics[width=0.7\textwidth]{figures/hackathon_team.jpg}
+  \includegraphics[width=0.25\textwidth]{figures/chelsey.jpg}
 \end{center}
+\caption{\textbf{The Screw team.} From left to right, Azhar Khandekar, Benjamin Decato, , Kieran O'Neill, Alexander Goncearenco; separate photo: Chelsey Fang.}
+\end{figure}
 
 \end{block}
 
+\begin{block}{References}
+
+\printbibliography[heading=none]
+\end{block}
+
+
 
 \begin{block}{Contact/GitHub}
-\textbf{GitHUB:} \verb1https://github.com/Epigenomics-Screw1  
+\textbf{Code/examples:} \verb1https://github.com/Epigenomics-Screw1  
 
 \textbf{Kieran O'Neill:} koneill@bcgsc.ca 
 
