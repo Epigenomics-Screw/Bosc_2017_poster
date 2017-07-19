@@ -37,9 +37,10 @@ clearlang=true
 
 
 \title{Screw: tools for building reproducible \\ single-cell epigenomics workflows}
-\author{Kieran O'Neill, Chelsey Fang, Benjamin Decato, Azhar Khandekar, Alexander Goncearenco, Ben Busby, Aly Karsan}
-\institute{Genome Sciences Centre, BC Cancer Agency, Vancouver, BC, Canada}
+\author{Kieran O'Neill\textsuperscript{1}, Chelsey Fang\textsuperscript{1}, Benjamin Decato\textsuperscript{2}, Azhar Khandekar\textsuperscript{3}, Alexander Goncearenco\textsuperscript{3}, Ben Busby\textsuperscript{3} , Aly Karsan\textsuperscript{1}}
 
+
+\institute{\textsuperscript{1} Genome Sciences Centre, BC Cancer Agency, Vancouver, BC, Canada \textsuperscript{2} Molecular \& Computational Biology Department, University of Southern California, Los Angeles, California, USA \textsuperscript{3} National Center for Biotechnology Information, National Institutes of Health, Bethesda, Maryland, USA}
 
 \begin{document}
 \begin{frame}[t, squeeze, fragile]
@@ -58,6 +59,9 @@ DNA methylation is a heritable epigenetic mark that shows a strong correlation w
 The gold standard for detecting DNA methylation is whole genome bisulfite sequencing (WGBS). 
 Recently, WGBS has been performed successfully on single cells (SC-WGBS) \cite{Schwartzman2015}.
 The resulting data represents a fundamental shift in the capacity to measure and interpret DNA methylation, especially in rare cell types and contexts where subtle cell-to-cell heterogeneity is crucial, such as in stem cells or cancer. 
+However, although some software tools have been published, and several existing studies have tended to use similar methods, no standardized pipeline for the analysis of SC-WGBS yet exists.
+
+
 
 \begin{figure}
 \begin{center}
@@ -66,6 +70,12 @@ The resulting data represents a fundamental shift in the capacity to measure and
 \caption[]{\textbf{DNA Methylation, both bulk and single cell}
 Schwartzman et al (2015) Nature Reviews in Genetics (used by permission) }
 \end{figure}
+
+\end{block}
+
+\begin{block}{Screw: Single Cell Reproducible Epigenomics Workflow}
+%\includegraphics[width=0.2\textwidth]{figures/screw_logo_1600.png}
+Screw aims to provide a series of CWL+Dockerised tools, mini-workflows and complete template workflows for creating fully reproducible SC-WGBS analyses.
 
 \end{block}
 
@@ -79,34 +89,30 @@ This requires having the exact \textbf{data}, \textbf{code} and \textbf{software
 \item Code is getting there with RMarkdown/Jupyter, but could be better.
 \item Software versions (and accompanying OS/ecosystem) are a big problem.
 \end{itemize}
-CWL aims to provide a uniform and fully reproducible way of representing bioinformatics workflows. Docker aims to provide the exact environment in which an analysis was run. Together, they promise to help bioinformaticians to publish fully reproducible research.
+\textbf{CWL} aims to solve the code problem by providing a uniform and fully reproducible way of representing bioinformatics workflows. \textbf{Docker} aims to solve the software version problem by providing the exact environment in which an analysis was run. Together, they promise to help bioinformaticians to publish fully reproducible research.
 
-As a side effect, Dockstore enables easy sharing of workflow components to help build new workflows. 
+\textbf{Dockstore} enables easy sharing of workflow components to help build new, reproducible, workflows. 
 \begin{figure}
 \begin{center}
 \includegraphics[width=0.9\textwidth]{figures/dockstore_logos.png}
 \end{center}
-\caption{\textbf{Docker, CWL and Dockstore.} CWL workflows (and Docker build files) are kept on GitHub. Quay.io automatically builds Docker images from these. Dockstore enables sharing of CWL-specified tools and workflows, along with a Docker image containing exact software.}
+\caption{\textbf{Docker, CWL and Dockstore.} CWL workflows (and Docker build files) are kept on GitHub. Quay.io automatically builds Docker images from these. Dockstore enables sharing of CWL-specified tools and workflows, along with a Docker image containing exact software. Image reused from dockstore.org under the Apache 2.0 license.}
 \end{figure}
 \end{block}
 
 
-\begin{block}{Screw: Single Cell Reproducible Epigenomics Workflow}
-%\includegraphics[width=0.2\textwidth]{figures/screw_logo_1600.png}
-Screw aims to provide a series of CWL+Dockerised mini-workflows and workflow components for creating fully reproducible single-cell DNA methylation analyses.
 
-\end{block}
 
 
 \begin{block}{What SC-WGBS Data Looks Like}
-Lots of cells, but lots of dropout too.
+SC-WGBS data tends to have a reasonable number of cells ($~$100 in currently published data, up to thousands in data being generated now). It also tends to have a lot of dropout -- lateral coverage in each cell ranges from 1\% to 20\%.
 
 \begin{figure}
 \begin{center}
 \includegraphics[width=0.9\textwidth]{figures/hoxa9_meth.png}
 
 \end{center}
-\caption{\textbf{DNA methylation around the \textit{HOXA9} TSS, from 100 single cells.}  Blue blocks indicate methylated CpGs, white unmethylated. Teal indicates missing data. DNA methylation data is very sparse -- only a handful of libraries have any coverage at all within a given window. Data from \cite{Farlik2016}; BigWIGS generated by Screw.}
+\caption{\textbf{DNA methylation around the \textit{HOXA9} TSS, from 100 single cells.}  Blue blocks indicate methylated CpGs, white unmethylated. Teal indicates missing data. DNA methylation data is very sparse -- only a handful of libraries have any coverage at all within a given window. Data from \cite{Farlik2016}; BigWIGS were generated by Screw and visualised in IGV.}
 \end{figure}
 \end{block}
 
@@ -135,12 +141,9 @@ Lots of cells, but lots of dropout too.
   \end{columns}
 
 	\begin{block}{Screw Workflow}
-	\begin{figure}
 	\begin{center}
   \includegraphics[width=0.95\textwidth]{figures/workflow_diagram.pdf}
   \end{center} 
-  \caption{\textbf{The Screw workflow, showing completed and short-term planned functionality.} }
-  \end{figure}
   \end{block}
   \begin{columns}[t,totalwidth=\textwidth]
 
@@ -150,11 +153,11 @@ Lots of cells, but lots of dropout too.
 
 % Second column, below figure   
 \begin{block}{Preprocessing: Format Interconversion}
-	One of the challenges in DNA methylation is the lack of a standard data format. BED files are poorly suited, since multiple data columns are needed. Also, CpG sites are all point locations, so the end column is unncessary. WIG/BigWIG can help, but don't support enough data columns. The consequence is that every data set has its own custom BED-like format. We are working on providing 
+	One of the challenges in DNA methylation is the lack of a standard data format. Neither BED nor WIG/BigWIG quite suit the requirements, so every data set uses its own custom BED-like format. Screw provides a script to convert from different formats into a format used internally by the rest of the Screw tools. We will add formats as we analyse existing public data sets. 
 \begin{figure}
 \begin{center}
 \includegraphics[width=0.9\textwidth]{figures/data_types.pdf}
-\caption{\textit{Diverse DNA methylation formats.} Formats from two published papers (\cite{Farlik2013} and \cite{Farlik2016}), NovoMethyl output format (unpublished), and Screw's standard internal format.}
+\caption{\textbf{Diverse DNA methylation formats.} Formats from two published papers (\cite{Farlik2013} and \cite{Farlik2016}), NovoMethyl output format, and Screw's standard internal format.}
 \end{center}
 \end{figure}
 
@@ -164,7 +167,7 @@ Lots of cells, but lots of dropout too.
 \begin{figure}
 \begin{center}
 \includegraphics[width=0.8\textwidth]{figures/farlik_heatmap.pdf}
-\caption{\textbf{Clustering of data from \cite{Farlik2016}.} The data was subset to only include enhancer sites from Enhancer Atlas found in CD34+ bone marrow cells. Only 47/100 cells had coverage in those regions.}
+\caption{\textbf{Clustering of data from \cite{Farlik2016} using Screw.} A BED file containing locations of active enhancer sites in CD34+ bone marrow was used to filter the CpG sites. (Data from Enhancer Atlas.) Only 47/100 cells had coverage in those enhancer regions.  }
 \end{center}
 \end{figure}
 
@@ -177,7 +180,7 @@ Lots of cells, but lots of dropout too.
 	\begin{column}{.48\textwidth}
 % Third column, below figure   
 
-\begin{block}{CWL+Docker Stumbling Blocks}
+\begin{block}{CWL+Docker Technical Stumbling Blocks}
 \begin{itemize}
 \item CWL does not have a good way of processing a whole directory full of files, then passing them on to a single tool.
 \item Quay.io maps tags to GitHub branches, but Docker treats tags like Git graph nodes, leading to problems refreshing branches while developing.
@@ -187,7 +190,7 @@ Lots of cells, but lots of dropout too.
 
 
 
-\begin{block}{Future Plans}
+\begin{block}{Future Work}
 Many methods are currently being developed, and some have debuted in papers without (yet) an accompanying methods paper. In future we plan to include functionality for:
 \begin{itemize}
 \item tSNE plotting
@@ -196,11 +199,13 @@ Many methods are currently being developed, and some have debuted in papers with
 \item Other machine learning pipelines (e.g. from \cite{Farlik2016}) 
 \end{itemize}
 
+There are also around half a dozen SC-WGBS (or SC-RRBS) data sets published. We intend to use Screw to perform the first single cell DNA methylation meta-analysis. All code and data will be published in a fully-reproducible form. 
+
 \end{block}
 
 
 \begin{block}{Powered by hackathons and interns}
-Screw was initially created during the NCBI Genomics Hackathon in March 2017, organised by Ben Busby. Ben organises awesome hackathons that drive a lot of new open source tool development. Since then, Chelsey Fang, a summer intern, has been working on the framework.
+Development of Screw began at the NCBI Genomics Hackathon in March 2017, organised by Ben Busby. Since then, Chelsey Fang, a summer intern, has been working on the framework.
 
 
 \begin{figure}
@@ -208,7 +213,7 @@ Screw was initially created during the NCBI Genomics Hackathon in March 2017, or
   \includegraphics[width=0.7\textwidth]{figures/hackathon_team.jpg}
   \includegraphics[width=0.2\textwidth]{figures/chelsey.jpg}
 \end{center}
-\caption{\textbf{The Screw team.} From left to right, Azhar Khandekar, Benjamin Decato, , Kieran O'Neill, Alexander Goncearenco; separate photo: Chelsey Fang.}
+\caption{\textbf{The Screw team.} From left to right, Azhar Khandekar, Benjamin Decato, Paul Cantalupo (who worked in parallel on a similar project), Kieran O'Neill, Alexander Goncearenco; separate photo: Chelsey Fang.}
 \end{figure}
 
 \end{block}
